@@ -1,3 +1,4 @@
+import java.awt.Image;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.rmi.NotBoundException;
@@ -6,6 +7,8 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Seguro;
@@ -21,6 +24,13 @@ public class Frm_cliente extends javax.swing.JFrame {
         conectarServidorSocket();
         vaciarTabla2();
         conectarServidorRMI();
+    }
+    public void CargarImagen(){
+        ImageIcon imgIcon = new ImageIcon(getClass().getResource("/xSeguro-voluntario.png.pagespeed.ic.4BcnJ3g3r3.png"));
+        Image imgEscalada = imgIcon.getImage().getScaledInstance(jLabel1.getWidth(),
+                jLabel1.getHeight(), Image.SCALE_SMOOTH);
+        Icon iconoEscalado = new ImageIcon(imgEscalada);
+        jLabel1.setIcon(iconoEscalado);
     }
     
     public void vaciarTabla() {
@@ -82,20 +92,25 @@ public class Frm_cliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        Jtitulo = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         cmbSeguros = new javax.swing.JComboBox<>();
         btnConsultarSeguros = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("ASEGURADORAS DE VEHICULOS");
+        Jtitulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Jtitulo.setText("ASEGURADORAS DE VEHICULOS");
+        jPanel1.add(Jtitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,7 +125,10 @@ public class Frm_cliente extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(338, 151, 790, 135));
+
         cmbSeguros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seguro Condor", "Seguro Autonomi", " " }));
+        jPanel1.add(cmbSeguros, new org.netbeans.lib.awtextra.AbsoluteConstraints(604, 105, 146, -1));
 
         btnConsultarSeguros.setText("Consultar");
         btnConsultarSeguros.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +136,7 @@ public class Frm_cliente extends javax.swing.JFrame {
                 btnConsultarSegurosActionPerformed(evt);
             }
         });
+        jPanel1.add(btnConsultarSeguros, new org.netbeans.lib.awtextra.AbsoluteConstraints(829, 104, 112, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,61 +151,10 @@ public class Frm_cliente extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable2);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(368, 368, 368)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(602, 602, 602)
-                                .addComponent(cmbSeguros, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(79, 79, 79)
-                                .addComponent(btnConsultarSeguros, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 251, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jScrollPane2))))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbSeguros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsultarSeguros))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 331, 850, 229));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 300, 490));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 8, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 6, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -255,6 +223,7 @@ public class Frm_cliente extends javax.swing.JFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Jtitulo;
     private javax.swing.JButton btnConsultarSeguros;
     private javax.swing.JComboBox<String> cmbSeguros;
     private javax.swing.JLabel jLabel1;
