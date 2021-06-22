@@ -20,6 +20,7 @@ public class Frm_cliente extends javax.swing.JFrame {
     
     public Frm_cliente() throws RemoteException, NotBoundException {
         initComponents();
+        CargarImagen();
         vaciarTabla();      
         conectarServidorSocket();
         vaciarTabla2();
