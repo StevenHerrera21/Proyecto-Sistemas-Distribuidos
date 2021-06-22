@@ -111,7 +111,7 @@ public class Frm_cliente extends javax.swing.JFrame {
 
         Jtitulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Jtitulo.setText("ASEGURADORAS DE VEHICULOS");
-        jPanel1.add(Jtitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel1.add(Jtitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,10 +126,10 @@ public class Frm_cliente extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(338, 151, 790, 135));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 850, 135));
 
         cmbSeguros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seguro Condor", "Seguro Autonomi", " " }));
-        jPanel1.add(cmbSeguros, new org.netbeans.lib.awtextra.AbsoluteConstraints(604, 105, 146, -1));
+        jPanel1.add(cmbSeguros, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 320, 146, -1));
 
         btnConsultarSeguros.setText("Consultar");
         btnConsultarSeguros.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +137,7 @@ public class Frm_cliente extends javax.swing.JFrame {
                 btnConsultarSegurosActionPerformed(evt);
             }
         });
-        jPanel1.add(btnConsultarSeguros, new org.netbeans.lib.awtextra.AbsoluteConstraints(829, 104, 112, -1));
+        jPanel1.add(btnConsultarSeguros, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 350, 112, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,10 +152,12 @@ public class Frm_cliente extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable2);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 331, 850, 229));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 300, 490));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 850, 110));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 6, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/seguro-de-auto.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 690, 260));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
